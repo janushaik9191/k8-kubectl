@@ -4,12 +4,15 @@ metadata:
   name: limits
 spec:
   containers:
+  # for container 1
   - name: nginx
     image: nginx
     resources:
       requests:
+      # soft limits
         cpu: 100m
         memory: 68Mi
+      # hard limits
       limits:
         cpu: 120m
         memory: 100Mi
