@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: almalinux
+spec:
+  containers:
+  - name: almalinix
+    image: almalinux:9
