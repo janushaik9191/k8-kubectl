@@ -1,0 +1,9 @@
+apiVersion : v1
+kind : ConfigMap
+metadata :
+  name : nginx-config
+data :
+  cource : devops
+  duration : "120 hrs"
+
+  
