@@ -4,9 +4,10 @@ metadata:
   name: nginx
 spec:
   selector:
-    project: expense
-    module: backend
-    environment: dev
+    # project: expense
+    # module: backend
+    # environment: dev
+    name : annotations
   ports:
   - name: nginx-svc-port
     protocol: TCP
