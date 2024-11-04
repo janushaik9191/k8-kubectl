@@ -11,14 +11,6 @@ spec:
     driver: ebs.csi.aws.com
     fsType: ext4
     volumeHandle: vol-0a00563ed6b628f15
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: topology.kubernetes.io/zone
-              operator: In
-              values:
-                - us-east-1a
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -39,12 +31,20 @@ kind: Pod
 metadata:
   name: ebs-static
 spec:
-  containers:
-  - name: nginx
-    image: nginx
-    volumeMounts:
-    - name: ebs-static
-      mountPath: /usr/share/nginx/html
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: topology.kubernetes.io/zone
+              operator: In
+              values:
+                - us-east-1a
+    containers:
+      - name: nginx
+        image: nginx
+      volumeMounts:
+       - name: ebs-static
+         mountPath: /usr/share/nginx/html
   volumes:
   - name: ebs-static
     persistentVolumeClaim:
