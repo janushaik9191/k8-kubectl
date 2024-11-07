@@ -32,8 +32,8 @@ metadata:
   labels:
     purpose: ebs-static
 spec:
-  # nodeSelector:
-  #   topology.kubernetes.io/zone: us-east-1b
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1d
   containers:
   - name: nginx
     image: nginx
@@ -58,4 +58,4 @@ spec:
     protocol: TCP
     port: 80 # service port
     targetPort: 80 # container port
-    # nodePort: 30007
+    nodePort: 30007
